@@ -1,15 +1,12 @@
 package algoritmos_escalonamento;
 
 public class Processo implements Runnable{
-	static int count;
 	String nome;
 	Thread thread;
 	
 	public Processo(String nome, int prioridade) {
-		count =   1;
+		this.nome = nome;
 		thread = new Thread(this);
-		//thread.start();
-		//thread.setPriority(prioridade);
 	}
 	
 	@Override
