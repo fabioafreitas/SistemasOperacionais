@@ -1,7 +1,7 @@
 package algoritmos_escalonamento;
 
 public class Processo implements Runnable{
-	private String nome;
+	private String nome;	// representará a expressão a ser calculada
 	private int prioridade;
 	private double tempoExecucao;
 	private Thread thread;
