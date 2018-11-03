@@ -1,12 +1,16 @@
 package algoritmos_escalonamento;
 
 public class Processo implements Runnable{
-	String nome;
-	Thread thread;
+	private String nome;
+	private int prioridade;
+	private double tempoExecucao;
+	private Thread thread;
 	
-	public Processo(String nome, int prioridade) {
+	public Processo(String nome, int prioridade, int tempoExecucao) {
 		this.nome = nome;
-		thread = new Thread(this);
+		this.prioridade = prioridade;
+		this.tempoExecucao = tempoExecucao;
+		thread = new Thread(this, nome);
 	}
 	
 	@Override
