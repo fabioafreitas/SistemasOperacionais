@@ -42,7 +42,7 @@ public class Main {
 
         for( int i = 0 ; i < expr.size() ; i++) {
             aux = expr.get(i);
-            prc[i] = new Processo(aux, calcularPrioridade(aux));
+            prc[i] = new Processo(aux, calcularPrioridade(aux), calculadora);
             prc[i].getThread().start();
         }
 

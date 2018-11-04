@@ -6,9 +6,10 @@ public class Processo implements Runnable{
 	private Thread thread;
 	static 	Calculadora calculadora;
 	
-	public Processo(String expr, int prioridade) {
+	public Processo(String expr, int prioridade, Calculadora calculadora) {
 		this.expressao = expr;
 		this.prioridade = prioridade;
+		this.calculadora = calculadora;
 		thread = new Thread(this, expr);
 	}
 	

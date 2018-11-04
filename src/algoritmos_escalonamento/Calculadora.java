@@ -34,29 +34,29 @@ public class Calculadora {
         for (int i = 0 ; i < c.length ; i++) {
             switch(c[i]) {
                 case '-':
-                    a = desempilha();
                     b = desempilha();
+                    a = desempilha();
                     empilha(a-b);
                     break;
                 case '+':
-                    a = desempilha();
                     b = desempilha();
+                    a = desempilha();
                     empilha(a+b);
                     break;
                 case '*':
-                    a = desempilha();
                     b = desempilha();
+                    a = desempilha();
                     empilha(a*b);
                     break;
                 case '/':
-                    a = desempilha();
                     b = desempilha();
+                    a = desempilha();
                     if(b != 0)  empilha(a/b);
                     break;
                 case '^':
-                    a = desempilha();
                     b = desempilha();
-                    if(a!=0 && b!=0)  empilha((int)pow(b,a));
+                    a = desempilha();
+                    if(a!=0 && b!=0)  empilha((int)pow(a,b));
                     break;
                 default:
                     empilha(Character.getNumericValue(c[i]));
