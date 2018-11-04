@@ -23,26 +23,15 @@ public class Main {
         return expr;
     }
 
-    public static int calcularPrioridade(String expr) {
-        if(expr != null) {
-            for(int i = 0; i < expr.length() ; i++) {
-                if(expr.charAt(i) == '^') return 1;
-                else if(expr.charAt(i) == '*' || expr.charAt(i) == '/') return 2;
-                else if(expr.charAt(i) == '+' || expr.charAt(i) == '-') return 3;
-            }
-        }
-        return 0;
-    }
-
     public static void main(String args[]) {
-        ArrayList<String> expr = lerArquivo();
-        Processo[] prc = new Processo[expr.size()];
-        Calculadora calculadora = new Calculadora();
-        String aux;
+        ArrayList<String> expr = lerArquivo();       // todas as equações a serem passadas para os processos
+
+        Processo[] prc = new Processo[expr.size()];  // array de processos
+
+        Calculadora calculadora = new Calculadora(); // recurso compartilhado
 
         for( int i = 0 ; i < expr.size() ; i++) {
-            aux = expr.get(i);
-            prc[i] = new Processo(aux, "Thread "+(i+1), calcularPrioridade(aux), calculadora);
+            prc[i] = new Processo(expr.get(i), "Thread "+(i+1), calculadora);
             prc[i].getThread().start();
         }
 

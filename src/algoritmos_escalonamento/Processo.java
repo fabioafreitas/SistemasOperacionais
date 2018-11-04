@@ -7,7 +7,7 @@ public class Processo implements Runnable{
 	private Thread thread;
 	private static Calculadora calculadora;
 	
-	public Processo(String expr, String nome, int prioridade, Calculadora calculadora) {
+	public Processo(String expr, String nome, Calculadora calculadora) {
 		this.nome = nome;
 		this.expressao = expr;
 		this.prioridade = prioridade;
@@ -17,10 +17,12 @@ public class Processo implements Runnable{
 	
 	@Override
 	public void run() {
-		calculadora.setExpr(expressao);
-		int x = calculadora.calcular();
-		tempoEspera();
-		System.out.println(nome+": "+expressao+" = "+x);
+		for (int i = 0 ;  i < 5 ; i++) {
+			calculadora.setExpr(expressao);
+			int x = calculadora.calcular();
+			//tempoEspera();
+			System.out.println(nome+": "+expressao+" = "+x);
+		}
 	}
 
 	public synchronized void tempoEspera() {
@@ -38,6 +40,16 @@ public class Processo implements Runnable{
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+		}
+	}
+
+	public void calcularPrioridade(String expr) {
+		if(expr != null) {
+			for(int i = 0; i < expr.length() ; i++) {
+				if(expr.charAt(i) == '^') this.prioridade = 1;
+				else if(expr.charAt(i) == '*' || expr.charAt(i) == '/') this.prioridade = 2;
+				else if(expr.charAt(i) == '+' || expr.charAt(i) == '-') this.prioridade = 3;
+			}
 		}
 	}
 
