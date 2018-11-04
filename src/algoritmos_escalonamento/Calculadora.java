@@ -1,37 +1,34 @@
 package algoritmos_escalonamento;
 
+import java.util.ArrayList;
+
 import static java.lang.Math.pow;
 
 public class Calculadora {
-    String expr;
-    private int[] pilha;
+    private String expr;
+    private ArrayList<Integer> pilha;
     private int counter;
 
-    public Calculadora(String expr) {
-        this.expr = expr;
-        pilha = new int[expr.length()];
+    public Calculadora() {
+        pilha = new ArrayList<>();
         counter = 0;
     }
 
-    public boolean isFull() {
-        return counter == pilha.length;
-    }
-
-    public boolean isEmpty() {
+    private boolean isEmpty() {
         return counter == 0;
     }
 
-    public void empilha(int c) {
-        if(!isFull()) pilha[counter++] = c;
+    private void empilha(int c) {
+        pilha.add(counter++, c);
     }
 
-    public int desempilha() {
+    private int desempilha() {
         if(!isEmpty())
-            return pilha[--counter];
+            return pilha.get(--counter);
         return 0;
     }
 
-    public int calcular() {
+    public synchronized int calcular() {
         char[] c = expr.toCharArray();
         int a, b;
         for (int i = 0 ; i < c.length ; i++) {
@@ -65,6 +62,12 @@ public class Calculadora {
                     empilha(Character.getNumericValue(c[i]));
             }
         }
-        return desempilha();
+        int aux = desempilha();
+        counter = 0; // resetando a pilha
+        return aux;
+    }
+
+    public synchronized void setExpr(String expr) {
+        this.expr = expr;
     }
 }
