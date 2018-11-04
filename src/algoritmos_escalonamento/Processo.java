@@ -1,28 +1,19 @@
 package algoritmos_escalonamento;
 
 public class Processo implements Runnable{
-	private String nome;	// representará a expressão a ser calculada
-	private int prioridade;
-	private double tempoExecucao;
-	private Thread thread;
+	int 	prioridade;		// prioridades: 3 (+ -), 2(* /), 1 (^)
+	String 	expressao;	// representará a expressão a ser calculada
+	Thread 	thread;
+	static 	Calculadora calculadora;
 	
-	public Processo(String nome, int prioridade, int tempoExecucao) {
-		this.nome = nome;
+	public Processo(String nome, int prioridade) {
+		this.expressao = nome;
 		this.prioridade = prioridade;
-		this.tempoExecucao = tempoExecucao;
 		thread = new Thread(this, nome);
 	}
 	
 	@Override
 	public void run() {
-		try {
-			for (int i = 0; i < 5; i++) {
-				System.out.println(" ");
-				Thread.sleep(1000);
-			}
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
+
 	}
 }
