@@ -30,6 +30,7 @@ public class Main {
 
         for( int i = 0 ; i < expr.size() ; i++) {
             prc[i] = new Processo(expr.get(i), "Thread "+(i+1), calculadora);
+            prc[i].calcularPrioridade(expr.get(i));
             prc[i].getThread().start();
         }
 

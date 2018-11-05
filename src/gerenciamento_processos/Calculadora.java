@@ -30,31 +30,6 @@ public class Calculadora {
         return 0;
     }
 
-    // dá um tempo de sleep com base na instrução
-    private void tempoEspera(char c) {
-    	int t1 = 250;
-    	int t2 = 500; 
-    	int t3 = 1000;
-    	
-    	
-        try {
-            switch (c) {
-                case '-':
-                case '+':
-                    Thread.sleep(t1);
-                    break;
-                case '*':
-                case '/':
-                    Thread.sleep(t2);
-                    break;
-                case '^':
-                    Thread.sleep(t3);
-                    break;
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
     public synchronized int calcular() {
         char[] c = expr.toCharArray();
@@ -89,7 +64,6 @@ public class Calculadora {
                 default:
                     empilha(Character.getNumericValue(c[i]));
             }
-            tempoEspera(c[i]);
         }
         int aux = desempilha();
         counter = 0; // resetando a pilha
