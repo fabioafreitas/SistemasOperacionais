@@ -1,4 +1,4 @@
-package algoritmos_escalonamento;
+package gerenciamento_processos;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -22,12 +22,10 @@ public class Main {
         }
         return expr;
     }
-
+    
     public static void main(String args[]) {
         ArrayList<String> expr = lerArquivo();       // todas as equações a serem passadas para os processos
-
         Processo[] prc = new Processo[expr.size()];  // array de processos
-
         Calculadora calculadora = new Calculadora(); // recurso compartilhado
 
         for( int i = 0 ; i < expr.size() ; i++) {

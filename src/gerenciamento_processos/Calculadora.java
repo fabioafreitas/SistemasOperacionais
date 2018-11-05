@@ -1,10 +1,12 @@
-package algoritmos_escalonamento;
+package gerenciamento_processos;
 
 import java.util.ArrayList;
 
 import static java.lang.Math.pow;
 
 public class Calculadora {
+
+	
     private String expr;
     private ArrayList<Integer> pilha;
     private int counter;
@@ -30,18 +32,23 @@ public class Calculadora {
 
     // dá um tempo de sleep com base na instrução
     private void tempoEspera(char c) {
+    	int t1 = 250;
+    	int t2 = 500; 
+    	int t3 = 1000;
+    	
+    	
         try {
             switch (c) {
                 case '-':
                 case '+':
-                    Thread.sleep(250);
+                    Thread.sleep(t1);
                     break;
                 case '*':
                 case '/':
-                    Thread.sleep(500);
+                    Thread.sleep(t2);
                     break;
                 case '^':
-                    Thread.sleep(1000);
+                    Thread.sleep(t3);
                     break;
             }
         } catch (InterruptedException e) {
